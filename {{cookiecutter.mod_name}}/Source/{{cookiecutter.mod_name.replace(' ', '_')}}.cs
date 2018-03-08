@@ -14,7 +14,7 @@ namespace {{cookiecutter.mod_name.replace(' ', '_')}}
 #if DEBUG
 			HarmonyInstance.DEBUG = true;
 #endif
-			HarmonyInstance harmony = HarmonyInstance.Create("uuugggg.rimworld.{{cookiecutter.mod_name.replace(' ', '_')}}.main");
+			HarmonyInstance harmony = HarmonyInstance.Create("{{cookiecutter.author}}.rimworld.{{cookiecutter.mod_name.replace(' ', '_')}}.main");
 			harmony.PatchAll(Assembly.GetExecutingAssembly());
 		}
 
