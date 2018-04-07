@@ -18,15 +18,15 @@ namespace {{cookiecutter.mod_name.replace(' ', '_')}}
 			harmony.PatchAll(Assembly.GetExecutingAssembly());
 		}
 
-		// public override void DoSettingsWindowContents(Rect inRect)
-		// {
-			// base.DoSettingsWindowContents(inRect);
-			// GetSettings<Settings>().DoWindowContents(inRect);
-		// }
-
-		// public override string SettingsCategory()
-		// {
-			// return "{{cookiecutter.mod_name}}";
-		// }
+//		public override void DoSettingsWindowContents(Rect inRect)
+//		{
+//			base.DoSettingsWindowContents(inRect);
+//			GetSettings<Settings>().DoWindowContents(inRect);
+//		}
+//
+//		public override string SettingsCategory()
+//		{
+//			return "{{cookiecutter.mod_name}}";
+//		}
 	}
 }
