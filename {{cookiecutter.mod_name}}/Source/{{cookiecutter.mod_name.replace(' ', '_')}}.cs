@@ -11,11 +11,19 @@ namespace {{cookiecutter.mod_name.replace(' ', '_')}}
 		{
 			// initialize settings
 			// GetSettings<Settings>();
+		}
+
+		[StaticConstructorOnStartup]
+		public static class ModHarmonyPatch
+		{
+			static ModHarmonyPatch()
+			{
 #if DEBUG
-			HarmonyInstance.DEBUG = true;
+				HarmonyInstance.DEBUG = true;
 #endif
-			HarmonyInstance harmony = HarmonyInstance.Create("{{cookiecutter.author}}.rimworld.{{cookiecutter.mod_name.replace(' ', '_')}}.main");
-			harmony.PatchAll(Assembly.GetExecutingAssembly());
+				HarmonyInstance harmony = HarmonyInstance.Create("{{cookiecutter.author}}.rimworld.{{cookiecutter.mod_name.replace(' ', '_')}}.main");
+				harmony.PatchAll(Assembly.GetExecutingAssembly());
+			}
 		}
 
 //		public override void DoSettingsWindowContents(Rect inRect)
