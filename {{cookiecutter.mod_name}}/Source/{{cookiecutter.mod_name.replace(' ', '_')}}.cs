@@ -11,19 +11,23 @@ namespace {{cookiecutter.mod_name.replace(' ', '_')}}
 		{
 			// initialize settings
 			// GetSettings<Settings>();
+#if DEBUG
+			HarmonyInstance.DEBUG = true;
+#endif
+
+			HarmonyInstance harmony = HarmonyInstance.Create"{{cookiecutter.author}}.rimworld.{{cookiecutter.mod_name.replace(' ', '_')}}.main");
+
+			//Turn off DefOf warning since harmony patches trigger it.
+			harmony.Patch(AccessTools.Method(typeof(DefOfHelper), "EnsureInitializedInCtor"),
+				new HarmonyMethod(typeof(Mod), "EnsureInitializedInCtorPrefix"), null);
+			
+			harmony.PatchAll();
 		}
 
-		[StaticConstructorOnStartup]
-		public static class ModHarmonyPatch
+		public static bool EnsureInitializedInCtorPrefix()
 		{
-			static ModHarmonyPatch()
-			{
-#if DEBUG
-				HarmonyInstance.DEBUG = true;
-#endif
-				HarmonyInstance harmony = HarmonyInstance.Create("{{cookiecutter.author}}.rimworld.{{cookiecutter.mod_name.replace(' ', '_')}}.main");
-				harmony.PatchAll(Assembly.GetExecutingAssembly());
-			}
+			//No need to display this warning.
+			return false;
 		}
 
 //		public override void DoSettingsWindowContents(Rect inRect)
