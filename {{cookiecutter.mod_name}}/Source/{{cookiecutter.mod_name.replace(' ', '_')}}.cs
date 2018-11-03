@@ -15,7 +15,7 @@ namespace {{cookiecutter.mod_name.replace(' ', '_')}}
 			HarmonyInstance.DEBUG = true;
 #endif
 
-			HarmonyInstance harmony = HarmonyInstance.Create"{{cookiecutter.author}}.rimworld.{{cookiecutter.mod_name.replace(' ', '_')}}.main");
+			HarmonyInstance harmony = HarmonyInstance.Create("{{cookiecutter.author}}.rimworld.{{cookiecutter.mod_name.replace(' ', '_')}}.main");
 
 			//Turn off DefOf warning since harmony patches trigger it.
 			harmony.Patch(AccessTools.Method(typeof(DefOfHelper), "EnsureInitializedInCtor"),
