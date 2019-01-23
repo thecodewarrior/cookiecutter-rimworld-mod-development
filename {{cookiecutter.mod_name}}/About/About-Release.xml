@@ -3,7 +3,7 @@
 	<name>{{cookiecutter.mod_name}}</name>
 	<author>{{cookiecutter.author}}</author>
 	<supportedVersions>
-		<li>1.0</li>
+		<li>{{cookiecutter.mod_ver}}</li>
 	</supportedVersions>
 	<description>{{cookiecutter.in_game_description}}</description>
 	<url>https://steamcommunity.com/id/{{cookiecutter.author}}/myworkshopfiles/?appid=294100</url>
