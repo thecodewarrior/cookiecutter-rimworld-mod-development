@@ -59,10 +59,4 @@
     <StartAction>Program</StartAction>
     <StartProgram>$(SolutionDir)..\..\RimWorldWin{%if(cookiecutter.rw64 != 'n')%}64{%endif%}.exe</StartProgram>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug -quicktest|AnyCPU' ">
-      <StartArguments>-quicktest</StartArguments>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release -quicktest|AnyCPU' ">
-      <StartArguments>-quicktest</StartArguments>
-  </PropertyGroup>
 </Project>
