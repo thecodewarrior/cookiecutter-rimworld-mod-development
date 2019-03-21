@@ -1,21 +1,15 @@
 {
     "mod_name": "Example Mod",
-    "mod_folder": " ",
     "author": "MySteamUsername",
     "in_game_description": "A short mod description.",
     "mod_ver": ["1.0", "1.1","0.19","0.18"],
     "create_empty_definitions": "n",
     "rw64": "y",
-    "githubURL": " ",
     
     "_visual_studio": {
         "mod_name": {
             "label": "Mod name",
             "description": "The name of your mod (cannot easily change later)"
-        },
-        "mod_folder": {
-            "label": "Mod folder",
-            "description": "The root folder for your mod."
         },
         "author": {
             "label": "Author",
@@ -38,10 +32,6 @@
             "label": "RimWorldWin64.exe ?",
             "description": "Are you using RimWorldWin64.exe or not to develop?",
             "selector": "yesno"
-        },
-        "githubURL": {
-            "label": "Github",
-            "url": "https://github.com/n-fisher/cookiecutter-rimworld-mod-development/blob/master/README.md"
         }
     }
 }
