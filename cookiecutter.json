@@ -33,5 +33,21 @@
             "description": "Are you using RimWorldWin64.exe or not to develop?",
             "selector": "yesno"
         }
-    }
+    },
+		
+		"_visual_studio_post_cmds": [
+			{
+					"name": "Tools.Shell",
+					"args": ["MsBuild.exe",
+							"{{cookiecutter._output_folder_path}}\\{{cookiecutter.mod_name}}\\{{cookiecutter.mod_name.replace(' ', '_')}}.sln",
+							"/t:Build",
+							"/p:Configuration=Release",
+							"/verbosity:minimal"
+					]
+			},
+			{
+					"name": "File.OpenProject",
+					"args": ["{{cookiecutter._output_folder_path}}\\{{cookiecutter.mod_name}}\\{{cookiecutter.mod_name.replace(' ', '_')}}.sln"]
+			}
+	]
 }
