@@ -45,21 +45,17 @@ A cookiecutter project that builds the basic Rimworld mod development file struc
 6. Click Modify
 
 ##### Usage
-(Due to a bug in VS, you'll have to make the specific mod's folder in `[...]/Rimworld/Mods/ModName` beforehand)
 1. Open Visual Studio
 2. `File -> New -> From Cookiecutter...`
 3. Search for `rimworld`
 4. Double-click `n-fisher/cookiecutter-rimworld-mod-development`
 5. Change the Template Options:
-   - `Create To` => `[...]/Rimworld/Mods/mod_name`
+   - `Create To` => `[...]/RimWorld/Mods`
    - `Mod name`
    - `Author` (Use your Steam username for automatic linking of mod to profile) (can change later in About-Release.xml)
    - `Mod Description` (not required, can change later in About-Release.xml)
-   - `Create blank XML files` (yes/no)
-6. `Create and Open Folder`
-7. In the Solution Explorer pane that comes up on the right, double click your `ModName.sln` file
-8. In the new Solution Explorer view that comes up, right click `RimWorldWin` and click `Set as Startup Project`
-9. Due to a bug in VS, you'll have to delete the folder `[...]/Rimworld/Mods/ModName - Release` after you create the project. Otherwise, you will receive an error message whenever you start the game before the first time that you build VS in Release mode.
+   - A few more options are available
+6. `Create and Open Project`
 
 
 # Basic Features
@@ -80,14 +76,13 @@ This cookiecutter builds the entire standard mod folder structure, with empty fo
       - AssemblyInfo.cs
     - `namespace_name`.cs
     - `namespace_name`.csproj
-    - `namespace_name`.csproj.user
   - Textures
   - `namespace_name`.sln
 
 ### VS Setup Automation
 - Links Rimworld and UnityEngine .dlls for importing in code
 - Sets build events to automate file management of About-$Version.xml for tagging development versions.
-- Clears the default set debugging and trace constants
+- Clears the default set trace constant
 - Creates a VS solution with correctly defined paths
 - Clicking `Start ▶️` will preform the designated build sequence and start Rimworld.exe tied to a Visual Studio resource monitor.
 
@@ -100,7 +95,7 @@ This cookiecutter setup takes full advantage of VS debug/release versions
   - The resulting .dll is placed in "{{cookiecutter.mod_name}}/Assemblies"
 - Release mode
   - About-Release.xml is copied to "{{cookiecutter.mod_name}} - Release/About/About.xml" and does not include the "- Dev Mode" tag in its title
-  - Building utilizes scripts to create or update the Release version of the mod. Solely the essential files are copied into a separate Release mod folder for a storage-optimized version of the mod
+  - Building creates or updates the Release version of the mod. Solely the essential files are copied into a separate Release mod folder for a clean version of the mod
   
 ### Optional Debug Save Profile
 <Temporarily removed>
