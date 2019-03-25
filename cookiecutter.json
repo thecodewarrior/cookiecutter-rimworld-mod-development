@@ -5,6 +5,7 @@
     "mod_ver": ["1.0", "1.1","0.19","0.18"],
     "create_empty_definitions": "n",
     "rw64": "y",
+		"helloWorld": "n",
     
     "_visual_studio": {
         "mod_name": {
@@ -31,6 +32,11 @@
         "rw64": {
             "label": "RimWorldWin64.exe ?",
             "description": "Are you using RimWorldWin64.exe or not to develop?",
+            "selector": "yesno"
+        },
+				"helloWorld":{
+            "label": "Log Hello World on start",
+            "description": "Do delete this later",
             "selector": "yesno"
         }
     },

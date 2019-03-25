@@ -11,7 +11,9 @@ namespace {{cookiecutter.mod_name.replace(' ', '_')}}
 	{
 		public Mod(ModContentPack content) : base(content)
 		{
-			// initialize settings
+{%if(cookiecutter.helloWorld != 'n')%}			Log.Message("Hello world from {{cookiecutter.mod_name}}");
+
+{% endif %}			// initialize settings
 			// GetSettings<Settings>();
 #if DEBUG
 			HarmonyInstance.DEBUG = true;
