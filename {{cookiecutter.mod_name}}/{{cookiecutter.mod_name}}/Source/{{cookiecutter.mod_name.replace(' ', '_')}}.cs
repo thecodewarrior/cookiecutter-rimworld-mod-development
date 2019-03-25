@@ -3,8 +3,8 @@ using System.Linq;
 using Verse;
 using RimWorld;
 using UnityEngine;
-using Harmony;
-
+{%if(cookiecutter.harmony != 'n')%}using Harmony;
+{%endif%}
 namespace {{cookiecutter.mod_name.replace(' ', '_')}}
 {
 	public class Mod : Verse.Mod
@@ -16,7 +16,7 @@ namespace {{cookiecutter.mod_name.replace(' ', '_')}}
 {% endif %}{%if(cookiecutter.settings != 'n')%}			// initialize settings
 			GetSettings<Settings>();
 
-{%endif%}#if DEBUG
+{%endif%}{%if(cookiecutter.harmony != 'n')%}#if DEBUG
 			HarmonyInstance.DEBUG = true;
 #endif
 
@@ -28,7 +28,7 @@ namespace {{cookiecutter.mod_name.replace(' ', '_')}}
 				harmony.Patch(DefOfHelperInfo, new HarmonyMethod(typeof(Mod), "EnsureInitializedInCtorPrefix"), null);
 {%endif%}			
 			harmony.PatchAll();
-		}
+{%endif%}		}
 {%if(cookiecutter.defOfWarn != 'n')%}
 		public static bool EnsureInitializedInCtorPrefix()
 		{
