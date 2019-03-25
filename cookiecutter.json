@@ -7,6 +7,7 @@
     "create_empty_definitions": "n",
     "rw64": "y",
 		"helloWorld": "n",
+		"settings": "n",
     
     "_visual_studio": {
         "dummy": {
@@ -41,6 +42,11 @@
 				"helloWorld":{
             "label": "Log Hello World on start",
             "description": "A sample so you know your mod is loaded: Do delete this later.",
+            "selector": "yesno"
+        },
+				"settings":{
+            "label": "Mod Settings",
+            "description": "Include extra code and files to use built-in Mod Settings",
             "selector": "yesno"
         }
     },

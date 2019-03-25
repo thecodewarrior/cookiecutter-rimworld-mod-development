@@ -13,9 +13,10 @@ namespace {{cookiecutter.mod_name.replace(' ', '_')}}
 		{
 {%if(cookiecutter.helloWorld != 'n')%}			Log.Message("Hello world from {{cookiecutter.mod_name}}");
 
-{% endif %}			// initialize settings
-			// GetSettings<Settings>();
-#if DEBUG
+{% endif %}{%if(cookiecutter.settings != 'n')%}			// initialize settings
+			GetSettings<Settings>();
+
+{%endif%}#if DEBUG
 			HarmonyInstance.DEBUG = true;
 #endif
 
@@ -34,16 +35,16 @@ namespace {{cookiecutter.mod_name.replace(' ', '_')}}
 			//No need to display this warning.
 			return false;
 		}
+{%if(cookiecutter.settings != 'n')%}
+		public override void DoSettingsWindowContents(Rect inRect)
+		{
+			base.DoSettingsWindowContents(inRect);
+			GetSettings<Settings>().DoWindowContents(inRect);
+		}
 
-//		public override void DoSettingsWindowContents(Rect inRect)
-//		{
-//			base.DoSettingsWindowContents(inRect);
-//			GetSettings<Settings>().DoWindowContents(inRect);
-//		}
-//
-//		public override string SettingsCategory()
-//		{
-//			return "{{cookiecutter.mod_name}}";
-//		}
+		public override string SettingsCategory()
+		{
+			return "{{cookiecutter.mod_name}}";
+		}
 	}
-}
+{% endif %}}
