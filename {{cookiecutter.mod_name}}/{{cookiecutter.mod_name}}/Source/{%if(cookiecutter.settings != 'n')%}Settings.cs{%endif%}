@@ -8,6 +8,7 @@ namespace {{cookiecutter.mod_name.replace(' ', '_')}}
 {
 	class Settings : ModSettings
 	{
+		//Use Settings.Get().settings to refer to this setting.
 		public bool setting;
 
 		public static Settings Get()
