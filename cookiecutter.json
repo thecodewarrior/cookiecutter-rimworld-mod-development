@@ -4,13 +4,13 @@
     "author": "MySteamUsername",
     "in_game_description": "A short mod description.",
     "mod_ver": ["1.0", "1.1","0.19","0.18"],
-    "create_empty_definitions": "n",
+    "create_empty_definitions": "y",
     "rw64": "y",
     "harmony": "y",
 		"helloWorld": "n",
-		"settings": "n",
-		"debugLog": "n",
-		"defOfWarn": "n",
+		"settings": "y",
+		"debugLog": "y",
+		"defOfWarn": "y",
     
     "_visual_studio": {
         "dummy": {
