@@ -73,7 +73,7 @@
 			{
 					"name": "Tools.Shell",
 					"args": ["MsBuild.exe",
-							"{{cookiecutter._output_folder_path}}\\{{cookiecutter.mod_name}}\\{{cookiecutter.mod_name.replace(' ', '_')}}.sln",
+							"{{cookiecutter._output_folder_path}}\\{{cookiecutter.mod_name}}\\{{cookiecutter.mod_name}}.sln",
 							"/t:Build",
 							"/p:Configuration=Release",
 							"/verbosity:minimal"
@@ -82,7 +82,7 @@
 			{
 					"name": "Tools.Shell",
 					"args": ["MsBuild.exe",
-							"{{cookiecutter._output_folder_path}}\\{{cookiecutter.mod_name}}\\{{cookiecutter.mod_name.replace(' ', '_')}}.sln",
+							"{{cookiecutter._output_folder_path}}\\{{cookiecutter.mod_name}}\\{{cookiecutter.mod_name}}.sln",
 							"/t:Build",
 							"/p:Configuration=Debug",
 							"/verbosity:minimal"
@@ -90,7 +90,7 @@
 			},
 			{
 					"name": "File.OpenProject",
-					"args": ["{{cookiecutter._output_folder_path}}\\{{cookiecutter.mod_name}}\\{{cookiecutter.mod_name.replace(' ', '_')}}.sln"]
+					"args": ["{{cookiecutter._output_folder_path}}\\{{cookiecutter.mod_name}}\\{{cookiecutter.mod_name}}.sln"]
 			}
 	]
 }
