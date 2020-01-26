@@ -1,5 +1,5 @@
 {
-		"dummy":"Okay!",
+    "dummy":"Okay!",
     "mod_name": "Example Mod",
     "author": "MySteamUsername",
     "in_game_description": "A short mod description.",
@@ -7,10 +7,10 @@
     "create_empty_definitions": "n",
     "rw64": "y",
     "harmony": "y",
-		"helloWorld": "n",
-		"settings": "n",
-		"debugLog": "n",
-		"defOfWarn": "n",
+    "helloWorld": "n",
+    "settings": "n",
+    "debugLog": "n",
+    "defOfWarn": "n",
     
     "_visual_studio": {
         "dummy": {
@@ -42,55 +42,55 @@
             "description": "Are you using RimWorldWin64.exe or not to develop?",
             "selector": "yesno"
         },
-				"harmony":{
+        "harmony":{
             "label": "Include Harmony library",
             "description": "A useful library to safely patch game code. Include it here, unless your mod will depend on HugsLib, or doesn't need to patch.",
             "selector": "yesno"
         },
-				"helloWorld":{
+        "helloWorld":{
             "label": "Log Hello World on start",
             "description": "A sample so you know your mod is loaded: Do delete this later.",
             "selector": "yesno"
         },
-				"settings":{
+        "settings":{
             "label": "Mod Settings",
             "description": "Include extra code and files to use built-in Mod Settings",
             "selector": "yesno"
         },
-				"debugLog":{
+        "debugLog":{
             "label": "Log.Message Debug only",
             "description": "This mod defines its own Log.Message, so Logging uses that instead of Verse.Log.Message. This method is disabled in release builds, so you can keep Log.Message in code, and it never spams users",
             "selector": "yesno"
         },
-				"defOfWarn":{
+        "defOfWarn":{
             "label": "Suppress DefOf warning",
             "description": "The game checks and warns if 'DefOf' classes are used before they are initialized, but some Harmony patches cause it to think they are used, when they are merely referenced in a patch.",
             "selector": "yesno"
         }
     },
-		
-		"_visual_studio_post_cmds": [
-			{
-					"name": "Tools.Shell",
-					"args": ["MsBuild.exe",
-							"{{cookiecutter._output_folder_path}}\\{{cookiecutter.mod_name}}\\{{cookiecutter.mod_name}}.sln",
-							"/t:Build",
-							"/p:Configuration=Release",
-							"/verbosity:minimal"
-					]
-			},
-			{
-					"name": "Tools.Shell",
-					"args": ["MsBuild.exe",
-							"{{cookiecutter._output_folder_path}}\\{{cookiecutter.mod_name}}\\{{cookiecutter.mod_name}}.sln",
-							"/t:Build",
-							"/p:Configuration=Debug",
-							"/verbosity:minimal"
-					]
-			},
-			{
-					"name": "File.OpenProject",
-					"args": ["{{cookiecutter._output_folder_path}}\\{{cookiecutter.mod_name}}\\{{cookiecutter.mod_name}}.sln"]
-			}
-	]
+        
+    "_visual_studio_post_cmds": [
+        {
+            "name": "Tools.Shell",
+            "args": ["MsBuild.exe",
+                "{{cookiecutter._output_folder_path}}\\{{cookiecutter.mod_name}}\\{{cookiecutter.mod_name}}.sln",
+                "/t:Build",
+                "/p:Configuration=Release",
+                "/verbosity:minimal"
+            ]
+        },
+        {
+            "name": "Tools.Shell",
+            "args": ["MsBuild.exe",
+                "{{cookiecutter._output_folder_path}}\\{{cookiecutter.mod_name}}\\{{cookiecutter.mod_name}}.sln",
+                "/t:Build",
+                "/p:Configuration=Debug",
+                "/verbosity:minimal"
+            ]
+        },
+        {
+            "name": "File.OpenProject",
+            "args": ["{{cookiecutter._output_folder_path}}\\{{cookiecutter.mod_name}}\\{{cookiecutter.mod_name}}.sln"]
+        }
+    ]
 }
