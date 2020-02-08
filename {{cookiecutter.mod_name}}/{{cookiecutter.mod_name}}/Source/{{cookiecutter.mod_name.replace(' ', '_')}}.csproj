@@ -35,6 +35,7 @@
         <Reference Include="Assembly-CSharp">
             <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
             <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\Assembly-CSharp.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/Assembly-CSharp.dll</HintPath>
             <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/Assembly-CSharp.dll</HintPath>
             <Private>False</Private>
         </Reference>
@@ -51,6 +52,7 @@
         <Reference Include="UnityEngine">
             <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath>
             <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.dll</HintPath>
             <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.dll</HintPath>
             <Private>False</Private>
         </Reference>
