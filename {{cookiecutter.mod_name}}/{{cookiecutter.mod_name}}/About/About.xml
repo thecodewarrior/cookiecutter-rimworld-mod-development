@@ -3,9 +3,17 @@
     <name>{{cookiecutter.mod_name}}</name>
     <author>{{cookiecutter.author}}</author>
     <supportedVersions>
-        <li>{{cookiecutter.game_version}}</li>
+        <li>1.1</li>
     </supportedVersions>
     <packageId>{{cookiecutter.author}}.{{cookiecutter.mod_name.replace(' ', '_')}}</packageId>
     <description>{{cookiecutter.in_game_description}}</description>
     <url>https://steamcommunity.com/id/{{cookiecutter.author}}/myworkshopfiles/?appid=294100</url>
-</ModMetaData>
+{%if(cookiecutter.harmony != 'n')%}    <modDependencies>
+        <li>
+            <packageId>brrainz.harmony</packageId>
+            <displayName>Harmony</displayName>
+            <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+            <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+        </li>
+    </modDependencies>
+{%endif%}</ModMetaData>

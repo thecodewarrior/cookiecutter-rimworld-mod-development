@@ -2,19 +2,10 @@
     "mod_name": "Example Mod",
     "author": "MySteamUsername",
     "in_game_description": "A short mod description.",
-    "game_version": ["1.0", "1.1"],
-    "create_empty_definitions": "n",
     "harmony": "y",
-    "helloWorld": "n",
     "settings": "n",
-    "debugLog": "n",
-    "defOfWarn": "n",
-    "managed_references": {
-        "1.0": [
-            "Assembly-CSharp",
-            "UnityEngine"
-        ],
-        "1.1": [
+    "_internal": {
+        "references": [
             "Assembly-CSharp",
             "ISharpZipLib",
             "Unity.TextMeshPro",
@@ -79,61 +70,15 @@
             "UnityEngine.WindModule",
             "UnityEngine.XRModule",
             "UnityEngine"
+        ],
+        "searchPaths": [
+            ["../_RimWorldData/Managed/", "Custom directory"],
+            ["C:\\Program Files (x86)\\Steam\\steamapps\\common\\RimWorld\\RimWorldWin64_Data\\Managed\\", "Windows Steam install path"],
+            ["$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/", "Linux Steam install path"],
+            ["$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/", "macOS Steam install path"]
         ]
     },
-    
-    "_visual_studio": {
-        "dummy": {
-            "label": "\"Create To\" should be RimWorld/Mods"
-        },
-        "mod_name": {
-            "label": "Mod name",
-            "description": "The name of your mod (cannot easily change later)"
-        },
-        "author": {
-            "label": "Author",
-            "description": "Use your Steam username for automatic linking of mod to profile (can change later in About-Release.xml)"
-        },
-        "in_game_description" : {
-            "label": "Mod Description",
-            "description": "The description of the mod as it appears in-game (can change later in About-Release.xml)"
-        },
-        "mod_ver" : {
-            "label": "Mod Version",
-            "description": "The version of Rimworld this mod is for (default:1.0)"
-        },
-        "create_empty_definitions": {
-            "label": "Create blank XML definition files",
-            "description": "Create empty files as templates for your definitions",
-            "selector": "yesno"
-        },
-        "harmony":{
-            "label": "Include Harmony library",
-            "description": "A useful library to safely patch game code. Include it here, unless your mod will depend on HugsLib, or doesn't need to patch.",
-            "selector": "yesno"
-        },
-        "helloWorld":{
-            "label": "Log Hello World on start",
-            "description": "A sample so you know your mod is loaded: Do delete this later.",
-            "selector": "yesno"
-        },
-        "settings":{
-            "label": "Mod Settings",
-            "description": "Include extra code and files to use built-in Mod Settings",
-            "selector": "yesno"
-        },
-        "debugLog":{
-            "label": "Log.Message Debug only",
-            "description": "This mod defines its own Log.Message, so Logging uses that instead of Verse.Log.Message. This method is disabled in release builds, so you can keep Log.Message in code, and it never spams users",
-            "selector": "yesno"
-        },
-        "defOfWarn":{
-            "label": "Suppress DefOf warning",
-            "description": "The game checks and warns if 'DefOf' classes are used before they are initialized, but some Harmony patches cause it to think they are used, when they are merely referenced in a patch.",
-            "selector": "yesno"
-        }
-    },
-        
+
     "_visual_studio_post_cmds": [
         {
             "name": "Tools.Shell",
