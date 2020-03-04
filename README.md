@@ -1,105 +1,71 @@
 # cookiecutter-rimworld-mod-development
-A cookiecutter project that builds the basic Rimworld mod development file structure and sets up a sane build environment.
+A cookiecutter project that builds the basic Rimworld mod development file structure and sets up a sane build 
+environment. Completely restructured and vastly simplified compared to its predecessor, and updated to function with 
+RimWorld 1.1 and the Harmony mod
 
-# Table of Contents  
-- [Install/Setup](#installsetup) 
-  - [Windows Command Prompt](#windows-command-prompt)  
-    - [Required Programs](#required-programs)  
-    - [Usage](#usage-inside-rimworldmods-folder)  
-  - [Microsoft Visual Studio Integration](#microsoft-visual-studio-integration)  
-    - [Required Programs](#required-programs-1)  
-    - [Usage](#usage)  
-- [Basic Features](#basic-features) 
-  - [Folder Structure](#folder-structure)  
-  - [VS Setup Automation](#vs-setup-automation)  
-- [Advanced Features](#advanced-features) 
-  - [Debug/Release Versioning](#debugrelease-versioning)  
-  - [Optional Debug Save Profile](#optional-debug-save-profile)  
-  - [Accident Forgiveness :tm:](#accident-forgiveness)  
-
-
-# Install/Setup
-### Windows Command Prompt
-##### Required Programs
+# Setup
+### Required Programs
 - [git](https://git-scm.com/downloads)
 - [python](https://www.python.org/downloads/)
 - [cookiecutter](https://github.com/audreyr/cookiecutter) (or `pip install cookiecutter`)
 
-##### Usage (inside Rimworld/Mods folder)
+### Usage
 1. `cookiecutter gh:thecodewarrior/cookiecutter-rimworld-mod-development`
-2. `[Answer the prompts]`
-3. Open the folder you just created and double-click the `ModName.sln` file
-4. In the Solution Explorer view on the right, right click `RimWorldWin` and click `Set as Startup Project`
-    
-### Microsoft Visual Studio Integration
-##### Required Programs
+0. Answer the prompts
+0. Open the folder you just created and double-click the `ModName.sln` file
 
-- [Visual Studio Community 2017](https://www.visualstudio.com/downloads/)
+If you're using a standard steam install of RimWorld then the RimWorld dlls should automatically be detected, if not,
+see the [automatic RimWorld detection](#automatic-rimworld-dll-detection) section below.
 
-##### Install (if no `File -> New -> From Cookiecutter...` option is available)
-1. Open up VS Installer (In Visual Studio -> Tools -> Gets Tools and Features)
-2. Click Modify
-3. Click Individual Components
-4. Scroll to Development activities
-5. Click the Cookiecutter template support checkbox
-6. Click Modify
+### Installing the Mod Into RimWorld
+As it is your mod won't actually load, since it isn't located in your `RimWorld/Mods` folder. To make it work you'll 
+have to [create a symlink](#creating-symlinks) in your `RimWorld/Mods` folder that links to the project's mod folder.
+(See [folder structure](#folder-structure) for where this is.) Here are some example commands to install the mod into a
+standard Steam installation of the game:
+##### Windows command prompt: 
+```txt
+mklink /D "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\CoolMod" "%userprofile%\Documents\RimWorld_Mods\CoolMod\CoolMod"
+```
+##### Linux command line:
+```txt
+ln -s "~/Documents/RimWorld_Mods/CoolMod/CoolMod" "~/.steam/steam/SteamApps/common/RimWorld/Mods"
+```
+##### macOS terminal:
+```txt
+ln -s "~/Documents/RimWorld_Mods/CoolMod/CoolMod" "~/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Mods"
+```
 
-##### Usage
-1. Open Visual Studio
-2. `File -> New -> From Cookiecutter...`
-3. Search for `rimworld`
-4. Double-click `n-fisher/cookiecutter-rimworld-mod-development`
-5. Change the Template Options:
-   - `Create To` => `[...]/RimWorld/Mods`
-   - `Mod name`
-   - `Author` (Use your Steam username for automatic linking of mod to profile) (can change later in About-Release.xml)
-   - `Mod Description` (not required, can change later in About-Release.xml)
-   - A few more options are available
-6. `Create and Open Project`
-
-
-# Basic Features
-### Folder Structure
+# Folder Structure
 This cookiecutter builds the entire standard mod folder structure, with empty folders as the default. `namespace_name` is automatically calculated.
-- {{cookiecutter.mod_name}}
-  - About
-    - About-Debug.xml
-    - About-Release.xml
-    - Preview.png
-  - Assemblies
-  - Defs
-  - Languages
-  - Patches
-  - Sounds
-  - Source
-    - Properties
-      - AssemblyInfo.cs
-    - `namespace_name`.cs
-    - `namespace_name`.csproj
-  - Textures
-  - `namespace_name`.sln
+```txt
+ModName/ <- This is the project folder
+  ModName/ <- This is the actual mod folder
+    About/
+      About.xml
+      Preview.png
+    Assemblies/
+    ... The rest of the mod files
+  ModName.sln
+  ModName.sln.DotSettings
+  ModName.csproj
+  Properties/
+    AssemblyInfo.cs
+  Source/
+    Mod.cs
+  ThirdParty/
+    0Harmony.dll <- Only used for compiling against. Not included in the output
+```
 
-### VS Setup Automation
-- Links Rimworld and UnityEngine .dlls for importing in code
-- Sets build events to automate file management of About-$Version.xml for tagging development versions.
-- Clears the default set trace constant
-- Creates a VS solution with correctly defined paths
-- Clicking `Start ▶️` will preform the designated build sequence and start Rimworld.exe tied to a Visual Studio resource monitor.
+# Automatic RimWorld dll Detection
+The `.csproj` file is set up to search in the following locations for the RimWorld dlls:
+- A custom install location: `../_RimWorldData/Managed/`
+- A Windows Steam install: `C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\`
+- A Linux Steam install: `$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/`
+- A macOS Steam install: `$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/`
 
-# Advanced Features
-### Debug/Release Versioning
-This cookiecutter setup takes full advantage of VS debug/release versions
-- Debug mode
-  - About-Debug.xml contains instructions on editing About-Release.xml and has a separate title for easy recognition from the Release version 
-  - Building creates an About.xml from About-Debug.xml with a "- Dev Build" tag to be easily distinguishable in the mod list
-  - The resulting .dll is placed in "{{cookiecutter.mod_name}}/Assemblies"
-- Release mode
-  - About-Release.xml is copied to "{{cookiecutter.mod_name}} - Release/About/About.xml" and does not include the "- Dev Mode" tag in its title
-  - Building creates or updates the Release version of the mod. Solely the essential files are copied into a separate Release mod folder for a clean version of the mod
-  
-### Optional Debug Save Profile
-<Temporarily removed>
-  
-### Accident Forgiveness
-- Edits in either generated temporary About.xml file (release or debug) won't get overwritten as long as the About-$Version.xml file it was copied from is not updated
-- Items edited in the Release directory will not be overwritten with older data from the Debug/Dev directory
+For custom install locations, [create a symlink](#creating-symlinks) called `_RimWorldData` next to the project directory 
+that points to your custom install's data directory. 
+
+# Creating Symlinks
+- Linux/macOS command line: `ln -s <what to point to> <where to make the symlink>`
+- Windows command prompt: `mklink /D <where to make the symlink> <what to point to>`
