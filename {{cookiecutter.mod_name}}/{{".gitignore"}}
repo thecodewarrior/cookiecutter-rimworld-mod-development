@@ -161,8 +161,6 @@ Temporary Items
 
 # Custom 
 
-bin/
-obj/
-Source/CameraQuicksave/packages/
-Source/CameraQuicksave/*.DotSettings.user
-*.kra~
+/packages/
+/obj/
+*~
